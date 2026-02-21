@@ -84,6 +84,11 @@ def get_user(user_id: str, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="User not found")
     return user
 
+# ✅ ADD THIS HEALTH ENDPOINT
+@app.get("/health")
+def health():
+    return {"status": "ok"}
+
 @app.get("/metrics")
 def metrics():
     return Response(generate_latest(), media_type=CONTENT_TYPE_LATEST)

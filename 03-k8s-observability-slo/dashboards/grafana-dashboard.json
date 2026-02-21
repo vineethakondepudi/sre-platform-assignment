@@ -1,0 +1,10 @@
+{
+  "title": "User Metadata Service - SRE Dashboard",
+  "panels": [
+    { "title": "Request Latency (p95)", "type": "graph" },
+    { "title": "Error Rate", "type": "graph" },
+    { "title": "Request Volume", "type": "graph" },
+    { "title": "CPU Usage", "type": "graph" },
+    { "title": "Memory Usage", "type": "graph" }
+  ]
+}
