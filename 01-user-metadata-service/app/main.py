@@ -75,3 +75,15 @@ def create_user(payload: dict, db: Session = Depends(get_db)):
         FAILURE_COUNT.inc()
         raise HTTPException(status_code=500, detail="Database write failed")
 
+    return user
+
+@app.get("/user/{user_id}")
+def get_user(user_id: str, db: Session = Depends(get_db)):
+    user = db.query(User).filter(User.user_id == user_id).first()
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+    return user
+
+@app.get("/metrics")
+def metrics():
+    return Response(generate_latest(), media_type=CONTENT_TYPE_LATEST)
